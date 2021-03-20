@@ -3,9 +3,6 @@
 // Adafruit NeoPixel library
 
 #include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
-#include <avr/power.h> // Required for 16 MHz Adafruit Trinket
-#endif
 
 // Which pin on the Arduino is connected to the NeoPixels?
 #define PIN        3 // On Trinket or Gemma, suggest changing this to 1
@@ -27,13 +24,8 @@ void setup() {
   Serial.begin(9600);
   delay(1000);
   Serial.setTimeout(10);
-  // These lines are specifically to support the Adafruit Trinket 5V 16 MHz.
-  // Any other board, you can remove this part (but no harm leaving it):
-#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
-  clock_prescale_set(clock_div_1);
-#endif
-  // END of Trinket-specific code.
-
+  Serial.println("Board available");
+  
   pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
   delay(500);
   pixels.clear();

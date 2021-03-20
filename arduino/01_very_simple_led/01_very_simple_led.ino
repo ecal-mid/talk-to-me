@@ -1,18 +1,16 @@
-String cmd = "";
+int cmd = 1;
 
 void setup() {
   Serial.begin(9600);
   delay(1000);
-  Serial.setTimeout(500);
+  Serial.setTimeout(10);
+  Serial.println("Board available");
+
   pinMode(LED_BUILTIN, OUTPUT);
 }
 void loop() {
 
-  cmd = Serial.readString();
-  if (cmd != "") {
-    Serial.println(cmd);
-  }
-  
+  cmd = Serial.parseInt();
   if (cmd == 1) {
     Serial.println(cmd);
     digitalWrite(LED_BUILTIN, HIGH);

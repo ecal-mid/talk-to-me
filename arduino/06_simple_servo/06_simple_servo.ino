@@ -10,6 +10,7 @@ void setup() {
   delay(1000);
   Serial.setTimeout(10);
   Serial.println("Board available");
+  
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
 }
 
