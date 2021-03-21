@@ -1,11 +1,13 @@
 var press_counter = 1;
 var isPlaying = false;
 
+bell = new Audio('audio/bell_short.wav');
+
 function processCommand(serial_cmd) {
     var soundToPlay;
     if (serial_cmd =="b1"){
             console.log("here");
-            soundToPlay = new Audio('audio/bell.wav');
+            soundToPlay = bell;
            
         if (press_counter == 1){
                
