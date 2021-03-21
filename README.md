@@ -15,12 +15,13 @@ _Alain Bellet + Paul Lëon_
 7. faire un test en ouvrant l'exemple via menu _Files > Examples > 01 Basic > Blink_
 8. appuyer sur le bouton avec la flèche (upload)
 9. si l'upload se passe bien vous devriez maintenant avoir une LED qui clignote sur votre board
-   > [potentiel problème](https://github.com/ecal-mid/talk-to-me/blob/main/Exemples/arduino/README.md)\_
+
+_[potentiel problème](https://github.com/ecal-mid/talk-to-me/blob/main/Exemples/arduino/README.md)_
 
 ## Utilisation Serial dans Chrome
 
 1. Activer "experimental-web-platform-features" via [chrome://flags/](chrome://flags/)
-2. ouvrir le fichier `browser/serial_monitor.html`
+2. ouvrir le fichier `exemples/browser/serial_monitor/index.html`
 3. connecter la board Arduino via USB
 4. appuyer sur le bouton **connect**
 5. une fenêtre avec une liste de ports serial doit s'ouvrir
