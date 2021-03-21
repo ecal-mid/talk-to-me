@@ -1,4 +1,3 @@
-function processCommand(serial_cmd) {
-    // your code here
- 
+function processCommand(serial_cmd) { // getting data from arduino
+    // do something
 }
