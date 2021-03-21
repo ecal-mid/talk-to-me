@@ -3,6 +3,8 @@ int button_pin = 5;
 
 #define msg "b1"
 
+boolean readyToPush = true;
+
 void setup()
 {
   Serial.begin(9600);
@@ -24,9 +26,14 @@ void loop()
 
   // button
   int buttonState = digitalRead(button_pin);
-  if (buttonState == LOW)
+  if (buttonState == LOW && readyToPush)
   {
     Serial.print(msg);
-    delay(2000); // wait for 2 sec
+    readyToPush = false;
+    //delay(2000); // wait for 2 sec
+  }
+  else if (buttonState == HIGH)
+  {
+    readyToPush = true;
   }
 }

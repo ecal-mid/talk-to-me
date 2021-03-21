@@ -1,20 +1,21 @@
-var press_counter = 1;
+var press_counter = 0;
 var isPlaying = false;
 
 bell = new Audio('audio/bell_short.wav');
 
 function processCommand(serial_cmd) {
-    var soundToPlay;
-    if (serial_cmd =="b1"){
-            console.log("here");
+    var soundToPlay = 0;
+
+    // button is clicked and no sound is playing
+    if (serial_cmd =="b1" && isPlaying == false){
+        
+        if (press_counter < 5){
             soundToPlay = bell;
-           
-        if (press_counter == 1){
-               
-        }else if (press_counter == 2){
+        }else if (press_counter == 5){
            
         }
-        if(soundToPlay != ""){
+ 
+        if(soundToPlay != 0){
             playSound(soundToPlay);
         }
         press_counter++;
@@ -24,6 +25,8 @@ function processCommand(serial_cmd) {
 function playSound(sound){
     sound.play();
     isPlaying = true;
+
+
     sound.onended = function() {
         console.log("The audio has ended");
         isPlaying = false;
