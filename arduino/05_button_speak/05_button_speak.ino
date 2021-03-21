@@ -1,6 +1,6 @@
 String cmd = "";
 int button_pin = 5;
-int press_counter = 0;
+
 void setup() {
   Serial.begin(9600);
   delay(1000);
@@ -21,12 +21,7 @@ void loop() {
   // button
   int buttonState = digitalRead(button_pin);
   if (buttonState == LOW) {
-    if (press_counter < 1) {
-      Serial.print("you just pressed a button");
-    } else {
-      Serial.print("you pressed a button " + String(press_counter) + " times");
-    }
+    Serial.print("btn1");
     delay (2000); // wait for 2 sec
-    press_counter++;
   }
 }
