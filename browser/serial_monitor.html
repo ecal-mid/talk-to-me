@@ -1,0 +1,94 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Serial Console</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/serial.js"></script>
+    </head>
+    
+    <body>
+        <div id="interface-serial">
+            <button id="connectButton">Connect</button><span id="statusBar"> </span><br>
+            <div class="legend">Seriall Monitor</div>
+            <textarea readonly="" id="receiveText" rows="20" cols="50"></textarea>
+            <br><br>
+            <input id="sendText" type="text" placeholder="message to send"><button id="sendButton">Send</button>
+            <br><br>
+            <div class="legend">Preset Messages</div>
+            <button id="sendButton1" >1</button>
+            <button id="sendButton2" >2</button>
+            <button id="sendButton3" >3</button>
+            <button id="sendButton4" >4</button>
+            <button id="sendButton5" >5</button>
+            <br><br>
+            <input class="btn_value" id="value_btn1" type="text" value="1"><div class="legend_small">value button 1</div><br>
+            <input class="btn_value" id="value_btn2" type="text" value="2"><div class="legend_small">value button 2</div><br>
+            <input class="btn_value" id="value_btn3" type="text" value="3"><div class="legend_small">value button 3</div><br>
+            <input class="btn_value" id="value_btn4" type="text" value="4"><div class="legend_small">value button 4</div><br>
+            <input class="btn_value" id="value_btn5" type="text" value="5"><div class="legend_small">value button 5</div><br>
+        </div>
+<script type="text/javascript">
+
+//Define the elements
+let sendText = document.getElementById("sendText");
+let sendButton = document.getElementById("sendButton");
+let receiveText = document.getElementById("receiveText");
+let connectButton = document.getElementById("connectButton");
+let statusBar = document.getElementById("statusBar");
+let sendButton1 = document.getElementById("sendButton1");
+let sendButton2 = document.getElementById("sendButton2");
+let sendButton3 = document.getElementById("sendButton3");
+let sendButton4 = document.getElementById("sendButton4");
+let sendButton5 = document.getElementById("sendButton5");
+
+//Couple the elements to the Events
+connectButton.addEventListener("click", clickConnect)
+sendButton.addEventListener("click", clickSend)
+sendButton1.addEventListener("click", () => {clickSendPreset("1");}, false);
+sendButton2.addEventListener("click", () => {clickSendPreset("2");}, false);
+sendButton3.addEventListener("click", () => {clickSendPreset("3");}, false);
+sendButton4.addEventListener("click", () => {clickSendPreset("4");}, false);
+sendButton5.addEventListener("click", () => {clickSendPreset("5");}, false);
+
+//When the connectButton is pressed
+async function clickConnect() {
+    if (port) {
+        //if already connected, disconnect
+        disconnect();
+
+    } else {
+        //otherwise connect
+        await connect();
+    }
+}
+
+//When the send button is pressed
+function clickSend() {
+    //send the message
+    writeToStream(sendText.value)
+     // print in the monitor
+    printSentValue(sendText.value)
+    //and clear the input field, so it's clear it has been sent
+    sendText.value = "";
+
+}
+
+function clickSendPreset(btn) {
+    val = document.getElementById("value_btn"+btn).value;
+    //send the message
+    writeToStream(val)
+    // print in the monitor
+    printSentValue(val)
+
+}
+
+function printSentValue(val){
+    receiveText.value += 'sent → '+ val +'\r\n';
+    //Scroll to the bottom of the text field
+    receiveText.scrollTop = receiveText.scrollHeight;
+}
+
+    </script>
+</body>
+</html>
