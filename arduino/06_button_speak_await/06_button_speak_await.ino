@@ -12,7 +12,7 @@ void setup() {
   Serial.setTimeout(10); // more timeout if long messages
   Serial.print("Board available");
   delay(500);
-  Serial.print("press a button to test");
+  Serial.print("press the button to test");
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW); // turn LED off
 

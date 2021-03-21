@@ -7,7 +7,7 @@ void setup() {
   Serial.setTimeout(500); // more timeout if long messages
   Serial.print("Board available");
   delay(500);
-  Serial.print("press a button to test");
+  Serial.print("press the button to test");
 
   pinMode(button_pin, INPUT_PULLUP);
 }
