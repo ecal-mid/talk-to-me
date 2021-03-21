@@ -3,12 +3,16 @@
 
 *Alain Bellet + Paul Noel*
 
-## Uttilisation Board arduino Nano 
+## Utilisation Board arduino Nano 
 1. installer arduino https://www.arduino.cc/en/software
 2. ouvrir arduino
 3. menu *Tools > Boards* sélectionner  **Arduino Nano**
 4. menu *Tools > Boards > Processor* sélectionner **ATmega328P (old bootloader)**
-5. menu *Tools > Boards > Port* sélectionner le dernier de la liste (devrait contenir le mot **usbserial** sur mac)
+5. connecter la board via USB
+6. menu *Tools > Boards > Port* sélectionner le dernier de la liste (devrait contenir le mot **usbserial** sur mac)
+7. faire un test en ouvrant l'exemple via menu *Files > Examples > 01 Basic > Blink*
+8. appuyer sur le bouton avec la flèche (upload)
+9. si l'upload se passe bien vous devriez maintenant avoir une LED qui clignote sur votre board
 
 
 ## Utilisation Serial dans Chrome
