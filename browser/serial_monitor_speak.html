@@ -57,12 +57,24 @@ function processCommand(serial_cmd) {
 }
 
 function speakMessage(msg_to_speak) {
+    var synth = window.speechSynthesis
     var msg = new SpeechSynthesisUtterance();
+    //var voices = synth.getVoices();
+
     msg.rate = 0.6; // From 0.1 to 10
     msg.pitch = 1; // From 0 to 2
-    msg.lang = 'en';
+    msg.lang = 'en-US';
+    //msg.voice = voices[12];
     msg.text = msg_to_speak;
-    window.speechSynthesis.speak(msg);
+    synth.speak(msg);
+
+    msg.onend = function(event) {
+        //console.log('Utterance has finished being spoken after ' + event.elapsedTime + ' milliseconds.');
+        sendToArduino("10"); // send code 10: voice finished to speak
+    }
+    
+    
+    //console.log(voices);
 }
 
  </script>

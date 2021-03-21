@@ -140,9 +140,7 @@ async function clickConnect() {
 //When the send button is pressed
 function clickSend() {
     //send the message
-    writeToStream(sendText.value)
-     // print in the monitor
-    printSentValue(sendText.value)
+    sendToArduino(sendText.value)
     //and clear the input field, so it's clear it has been sent
     sendText.value = "";
 
@@ -151,10 +149,14 @@ function clickSend() {
 function clickSendPreset(btn) {
     val = document.getElementById("value_btn"+btn).value;
     //send the message
-    writeToStream(val)
-    // print in the monitor
-    printSentValue(val)
+    sendToArduino(val);
+}
 
+function sendToArduino(cmd){
+    //send the message
+    writeToStream(cmd)
+    // print in the monitor
+    printSentValue(cmd)
 }
 
 function printSentValue(val){
