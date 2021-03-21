@@ -16,7 +16,7 @@ _Alain Bellet + Paul Lëon_
 8. appuyer sur le bouton avec la flèche (upload)
 9. si l'upload se passe bien vous devriez maintenant avoir une LED qui clignote sur votre board
 
-_[potentiel problème](https://github.com/ecal-mid/talk-to-me/blob/main/Exemples/arduino/README.md)_
+_[potentiel problème](https://github.com/ecal-mid/talk-to-me/blob/main/exemples/arduino/README.md)_
 
 ## Utilisation Serial dans Chrome
 
