@@ -1,4 +1,4 @@
-#Eventuel problème
+# Eventuel problème
 
 - Sur certain windows et ancienne version de mac il faut installer le driver pour la puce CH340 de l'Arduino Nano
 
