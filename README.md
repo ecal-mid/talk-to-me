@@ -21,6 +21,6 @@
 3. connecter la board Arduino via USB
 4. appuyer sur le bouton **connect**
 5. une fenêtre avec une liste de ports serial doit s'ouvrir
-6. sélectionner le bon port (à vérifier mac/pc)
+6. sélectionner le bon port (à vérifier mac/pc) **Attention, vérifier que le serial monitor n'est pas ouvert dans Arduino**
 7. le status à côté du bouton connect devrait indiquer **connected**
 8. les système est prêt pour communiquer dans les deux sens
