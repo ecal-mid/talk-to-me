@@ -12,5 +12,14 @@ audio = new Audio("/bell.wav");
 
 ```javascript
 audio.play();
+
 audio.pause();
+```
+
+- Do something at the end of the audi
+
+```javascript
+audio.onended = function () {
+  // do something
+};
 ```
