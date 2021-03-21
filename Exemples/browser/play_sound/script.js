@@ -2,6 +2,7 @@ var press_counter = 0;
 var isPlaying = false;
 
 bell = new Audio('audio/bell_short.wav');
+whoSThere = new Audio('audio/who-s-there.wav');
 
 function processCommand(serial_cmd) {
     var soundToPlay = 0;
@@ -12,9 +13,10 @@ function processCommand(serial_cmd) {
         if (press_counter < 5){
             soundToPlay = bell;
         }else if (press_counter == 5){
-           
+           soundToPlay = whoSThere;
         }
- 
+
+
         if(soundToPlay != 0){
             playSound(soundToPlay);
         }
@@ -26,9 +28,9 @@ function playSound(sound){
     sound.play();
     isPlaying = true;
 
-
+    // when the sound end
     sound.onended = function() {
-        console.log("The audio has ended");
+       // console.log(audio ended");
         isPlaying = false;
        // sendToArduino("10")
     };
