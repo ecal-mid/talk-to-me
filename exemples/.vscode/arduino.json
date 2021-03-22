@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:nano",
+    "configuration": "cpu=atmega328old",
+    "port": "COM13",
+    "sketch": "arduino\\05_button_speak\\05_button_speak.ino"
+}

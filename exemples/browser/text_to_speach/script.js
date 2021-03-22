@@ -2,7 +2,8 @@ var press_counter = 1;
 
 function processCommand(serial_cmd) {
     var text_msg = "";
-    if (serial_cmd =="b1"){
+    if (serial_cmd =="1"){
+        console.log("counter = "+ press_counter);
         if (press_counter == 1){
             text_msg ="you just pressed me";
         }else if (press_counter == 2){
