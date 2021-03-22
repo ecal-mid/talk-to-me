@@ -1,7 +1,7 @@
 String cmd = "";
 int button_pin = 5;
 int state = 1;
-#define msg "bt1"
+#define msg "b1"
 /*
    States
    1. wait for user input
