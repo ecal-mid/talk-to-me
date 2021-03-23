@@ -36,7 +36,7 @@ function speakMessage(msg_to_speak) {
     //     msg.rate = 1;
     // }
 
-   // msg.rate = 0.6; // From 0.1 to 10
+    msg.rate = 0.6; // SPEED OF THE VOICE From 0.1 to 10 
     msg.pitch = 1; // From 0 to 2
     msg.lang = 'en-US';
     //msg.voice = voices[12];
@@ -58,11 +58,11 @@ window.onload = ()=>{
     
     synth.onvoiceschanged = ()=>{
         voices = synth.getVoices();
+        //console.log("est-ce que ça marche")
         console.log("ready");
         console.log(voices)
     }
-   // voices = synth.getVoices();
-   
+   // voices = synth.getVoices(); 
 }
 
 

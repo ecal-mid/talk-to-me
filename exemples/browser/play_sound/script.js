@@ -8,7 +8,7 @@ function processCommand(serial_cmd) {
     var soundToPlay = 0;
 
     // button is clicked and no sound is playing
-    if (serial_cmd =="b1" && isPlaying == false){
+    if (serial_cmd =="1" && isPlaying == false){
         
         if (press_counter < 5){
             soundToPlay = bell;
