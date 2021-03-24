@@ -7,36 +7,35 @@ voices.en = [];
 
 let chosenVoice = 0; 
 let readyToSpeak = true;
+let speed = 1;
+let pitch = 0.1;
 
 // Pour choisir une voix
 // chosenVoice = voices.langue.index
 // langue "en" ou "fr"
 //  
 // Exemple : chosenVoice
+const speedSlider  = document.getElementById("speed");
 
-let speed = 1;
-let pitch = 1;
+speedSlider.addEventListener("change", () =>{
 
-const speedSlider = document.getElementById("speed");
-const pitchSlider = document.getElementById("pitch");
-
-speedSlider.addEventListener("change", function(){
-    const value = speedSlider.value;
-    speed = value/10 + 0.1;
-    if(speed > 10){
-        speed = 10;
-    }
-    document.getElementById("speedValue").innerHTML  = speed;
-   
+ speed  = speedSlider.value / 10  + 0.1
+ if(speed > 2){
+     speed = 2;
+ }
+ document.getElementById("speedValue").innerHTML = speed;
 })
 
-pitchSlider.addEventListener("change", function(){
-    const value = pitchSlider.value;
-    pitch = value/50;
-    document.getElementById("pitchValue").innerHTML  = pitch;
-    
-})
+const pitchSlider  = document.getElementById("pitch");
 
+pitchSlider.addEventListener("change", () =>{
+
+ pitch  = pitchSlider.value / 10  + 0.1
+ if(pitch > 2){
+     pitch = 2;
+ }
+ document.getElementById("pitchValue").innerHTML = pitch;
+})
 
 function speakMessage(msg_to_speak) {
 
@@ -48,20 +47,19 @@ function speakMessage(msg_to_speak) {
         if(chosenVoice != 0){
             msg.voice = chosenVoice;
             msg.lang = chosenVoice.lang;
-            msg.rate = speed; // SPEED OF THE VOICE From 0.1 to 10 
-            msg.pitch = pitch; // From 0 to 2
-            console.log(chosenVoice)
+           console.log(chosenVoice);
         }
     
-       
+        msg.rate = speed; // SPEED OF THE VOICE From 0.1 to 10 
+        msg.pitch = pitch; // From 0 to 2
         
       
         msg.text = msg_to_speak;
 
         synth.speak(msg); 
         document.getElementById("speaking").style.display = "block";
+
         msg.onend = function(event) {
-            
            // sendToArduino("10"); // send code 10: voice finished to speak
             readyToSpeak = true;
             document.getElementById("speaking").style.display = "none";
@@ -109,11 +107,11 @@ function loadVoice (){
 }
 
 function changeVoice(voice){
-    
     chosenVoice = voice;
     console.log(chosenVoice.lang, "|", chosenVoice.name);
-    speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
- 
+    console.log(chosenVoice);
+    //speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
+    speakMessage("hello people");
 }
 
 function  creatSpeakingSpan(){
