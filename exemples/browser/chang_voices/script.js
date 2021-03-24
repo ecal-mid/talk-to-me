@@ -107,14 +107,14 @@ function loadVoice (){
 }
 
 function changeVoice(voice){
-    chosenVoice = voice;
-    console.log(chosenVoice.lang, "|", chosenVoice.name);
-    console.log(chosenVoice);
 
-    lang = voice.lang
+    chosenVoice  = voice;    
+   
+    console.log(voice.lang, "|", voice.name);
+
+    const lang = voice.lang
 
     if(lang[0] == "e" && lang[1] == "n"){
-        console.log("c'est la lettre");
         speakMessage("this is a test sentence so you can here my voice")
     }else{
         speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");

@@ -47,11 +47,12 @@ function speakMessage(msg_to_speak) {
     
         if(chosenVoice != 0){
             msg.voice = chosenVoice;
+            msg.lang = chosenVoice.lang;
+           console.log(chosenVoice);
         }
     
         msg.rate = 0.6; // SPEED OF THE VOICE From 0.1 to 10 
         msg.pitch = 1; // From 0 to 2
-        msg.lang = 'en-US';
 
         msg.text = msg_to_speak;
         synth.speak(msg);

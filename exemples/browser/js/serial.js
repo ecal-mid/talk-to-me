@@ -312,8 +312,9 @@ function loadVoice (){
             for(let i = 0;i<voices[lang].length;i++){
                 var btn = document.createElement("BUTTON");   // Create a <button> element
                 btn.style.textAlign = "left";
-                btn.innerHTML = `${i} - ${voices[lang][i].name}`;  
-                btn.onclick = () => {changeVoice(lang, i)};                 // Insert text
+                const currentVoice = voices[lang][i];
+                btn.innerHTML = `${i} - ${currentVoice.name}`;  
+                btn.onclick = () => {changeVoice(currentVoice, lang, i)};                 // Insert text
                 div.appendChild(btn);
             }
             container.appendChild(div);    
@@ -322,21 +323,24 @@ function loadVoice (){
 
 }
 
-function changeVoice(lang, index){
-    
-    chosenVoice = voices[lang][index];
-    console.log(lang, index, "|", chosenVoice.name);
-    console.log(lang);
-    if(lang == "en"){
-        speakMessage("This is a test message so you can here my voice");
-    }else{
-        speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
+function changeVoice(voice, langage, index){
+    if(readyToSpeak){
+        chosenVoice = voice;
+        const lang = voice.lang;
+      
+          if(lang[0] == "e" && lang[1] == "n"){
+              console.log("c'est la lettre");
+              speakMessage("this is a test sentence so you can here my voice")
+          }else{
+              speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
+          }
+          
+          console.warn(
+          `Pour utiliser cette voix :
+          ~ligne 8
+          ChosenVoice = voices.${langage}.${index}`);
     }
-    
-    console.warn(
-    `Pour utiliser cette voix :
-    ~ligne 8
-    ChosenVoice = voices.${lang}.${index}`);
+   
 }
 
 window.onload = function(){
