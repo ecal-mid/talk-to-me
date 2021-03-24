@@ -23,11 +23,13 @@ function speakMessage(msg_to_speak) {
     
         if(chosenVoice != 0){
             msg.voice = chosenVoice;
+            msg.lang = chosenVoice.lang;
+            console.log(chosenVoice)
         }
     
         msg.rate = 0.6; // SPEED OF THE VOICE From 0.1 to 10 
         msg.pitch = 1; // From 0 to 2
-        msg.lang = 'en-US';
+        
       
         msg.text = msg_to_speak;
 
@@ -70,8 +72,9 @@ function loadVoice (){
             for(let i = 0;i<voices[lang].length;i++){
                 var btn = document.createElement("BUTTON");   // Create a <button> element
                 btn.style.textAlign = "left";
-                btn.innerHTML = `${i} - ${voices[lang][i].name}`;  
-                btn.onclick = () => {changeVoice(lang, i)};                 // Insert text
+                const currentVoice = voices[lang][i];
+                btn.innerHTML = `${i} - ${currentVoice.name}`;  
+                btn.onclick = () => {changeVoice(currentVoice)};                 // Insert text
                 div.appendChild(btn);
             }
             container.appendChild(div);    
@@ -80,25 +83,13 @@ function loadVoice (){
 
 }
 
-function changeVoice(lang, index){
+function changeVoice(voice){
     
-    chosenVoice = voices[lang][index];
-    console.log(lang, index, "|", chosenVoice.name);
+    chosenVoice = voice;
+    console.log(chosenVoice.lang, "|", chosenVoice.name);
     
-    const l  = lang.toString();
-    console.log(l);
-    if(l == "en"){
-        speakMessage("This is a test message so you can here my voice");
-    }else{
         speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
-    }
-    
-    console.warn(
-    `Pour utiliser cette voix :
-    ~ligne 8
-    ChosenVoice = voices.${lang}.${index}`);
-   
-
+ 
 }
 
 function  creatSpeakingSpan(){
