@@ -31,12 +31,11 @@ function speakMessage(msg_to_speak) {
       
         msg.text = msg_to_speak;
 
-        synth.speak(msg);
-        
+        synth.speak(msg); 
         document.getElementById("speaking").style.display = "block";
         msg.onend = function(event) {
             
-            sendToArduino("10"); // send code 10: voice finished to speak
+           // sendToArduino("10"); // send code 10: voice finished to speak
             readyToSpeak = true;
             document.getElementById("speaking").style.display = "none";
             console.log("sended 10")
@@ -102,8 +101,30 @@ function changeVoice(lang, index){
 
 }
 
+function  creatSpeakingSpan(){
+   
+    const speakSpan = document.createElement("SPAN");
+    speakSpan.id = "speaking";
+    speakSpan.innerHTML = "SPEAKING"; 
+    speakSpan.style.speacolor = "black"; 
+    speakSpan.style.display= "none";
+    speakSpan.style.borderRadius = "300px";
+    speakSpan.style.position = "fixed";  
+    speakSpan.style.textAlign = "center"; 
+    speakSpan.style.top = "40%"; 
+    speakSpan.style.backgroundColor = "white";
+    // speakSpan.style.left = "25%"; 
+    speakSpan.style.width = "90%";
+    speakSpan.style.padding = "30px";  
+   // speakSpan.style.fontSize = "10vm";
+    speakSpan.style.zIndex = 100;
+     document.body.appendChild(speakSpan);
+
+}
+
 window.onload  = function(){
     loadVoice();
+    creatSpeakingSpan();
 }
 
 
