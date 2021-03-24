@@ -10,8 +10,21 @@
         <div id="container">
             <div id="menubar">Test the voices available on your computer</div>
             <div id="voices"></div>  
+        
         </div>
-
+        <div>
+            <label for="speed">Speed:
+                <span id="speedValue">1</span>
+            </label><br>
+            <input type="range" min="0" max="100" value="1" class="slider" id="speed">
+        </div>
+        <div>
+            <label for="pitch">Pitch:
+                <span id="pitchValue">1</span>
+            </label><br>
+            <input type="range" min="0" max="100" value="50" class="slider" id="pitch">
+        </div>
+        
 <!-- Load JS scripts - do not remove-->
         <script src="script.js"></script>
         <!-- <script src="../js/serial.js"></script> -->

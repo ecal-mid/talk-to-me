@@ -14,6 +14,30 @@ let readyToSpeak = true;
 //  
 // Exemple : chosenVoice
 
+let speed = 1;
+let pitch = 1;
+
+const speedSlider = document.getElementById("speed");
+const pitchSlider = document.getElementById("pitch");
+
+speedSlider.addEventListener("change", function(){
+    const value = speedSlider.value;
+    speed = value/10 + 0.1;
+    if(speed > 10){
+        speed = 10;
+    }
+    document.getElementById("speedValue").innerHTML  = speed;
+   
+})
+
+pitchSlider.addEventListener("change", function(){
+    const value = pitchSlider.value;
+    pitch = value/50;
+    document.getElementById("pitchValue").innerHTML  = pitch;
+    
+})
+
+
 function speakMessage(msg_to_speak) {
 
     if(readyToSpeak){
@@ -24,11 +48,12 @@ function speakMessage(msg_to_speak) {
         if(chosenVoice != 0){
             msg.voice = chosenVoice;
             msg.lang = chosenVoice.lang;
+            msg.rate = speed; // SPEED OF THE VOICE From 0.1 to 10 
+            msg.pitch = pitch; // From 0 to 2
             console.log(chosenVoice)
         }
     
-        msg.rate = 0.6; // SPEED OF THE VOICE From 0.1 to 10 
-        msg.pitch = 1; // From 0 to 2
+       
         
       
         msg.text = msg_to_speak;
@@ -87,8 +112,7 @@ function changeVoice(voice){
     
     chosenVoice = voice;
     console.log(chosenVoice.lang, "|", chosenVoice.name);
-    
-        speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
+    speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
  
 }
 
