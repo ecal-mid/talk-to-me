@@ -8,7 +8,7 @@ voices.en = [];
 let chosenVoice = 0; 
 let readyToSpeak = true;
 let speed = 1;
-let pitch = 0.1;
+let pitch = 1;
 
 // Pour choisir une voix
 // chosenVoice = voices.langue.index
@@ -110,8 +110,17 @@ function changeVoice(voice){
     chosenVoice = voice;
     console.log(chosenVoice.lang, "|", chosenVoice.name);
     console.log(chosenVoice);
-    //speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
-    speakMessage("hello people");
+
+    lang = voice.lang
+
+    if(lang[0] == "e" && lang[1] == "n"){
+        console.log("c'est la lettre");
+        speakMessage("this is a test sentence so you can here my voice")
+    }else{
+        speakMessage("Ceci est un message de test qui vous permet d'entendre ma voix");
+    }
+    
+ 
 }
 
 function  creatSpeakingSpan(){
