@@ -5,8 +5,6 @@ var voices = {};
 voices.fr = [];
 voices.en = [];
 
-
-
 let chosenVoice = 0;
 function voicesReady(){
     // define your langage here

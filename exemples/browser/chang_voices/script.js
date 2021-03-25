@@ -5,10 +5,22 @@ var voices = {};
 voices.fr = [];
 voices.en = [];
 
+console.log(voices);
+
 let chosenVoice = 0; 
 let readyToSpeak = true;
 let speed = 1;
 let pitch = 1;
+
+var msg =  new SpeechSynthesisUtterance();
+
+const autoPitchBox = document.getElementById("autoPitch");
+
+let autoPitch = false;
+
+autoPitchBox.addEventListener("change", ()=>{
+    autoPitch = autoPitchBox.checked;
+})
 
 // Pour choisir une voix
 // chosenVoice = voices.langue.index
@@ -17,24 +29,31 @@ let pitch = 1;
 // Exemple : chosenVoice
 const speedSlider  = document.getElementById("speed");
 
-speedSlider.addEventListener("change", () =>{
+speedSlider.addEventListener("input", () =>{
 
- speed  = speedSlider.value / 10  + 0.1
- if(speed > 2){
-     speed = 2;
- }
+ speed  = speedSlider.value;
+ 
+ msg.rate = speed; // SPEED OF THE VOICE From 0.1 to 10 
+ 
  document.getElementById("speedValue").innerHTML = speed;
+
+ if(autoPitch){
+    pitch  = 2 - speed;
+    pitchSlider.value = pitch;
+    msg.pitch = pitch; // From 0 to 2
+    document.getElementById("pitchValue").innerHTML = pitch;
+ }
 })
 
 const pitchSlider  = document.getElementById("pitch");
 
 pitchSlider.addEventListener("change", () =>{
-
- pitch  = pitchSlider.value / 10  + 0.1
- if(pitch > 2){
-     pitch = 2;
- }
- document.getElementById("pitchValue").innerHTML = pitch;
+if(!autoPitch){
+    pitch  = pitchSlider.value;
+    msg.pitch = pitch; // From 0 to 2
+    document.getElementById("pitchValue").innerHTML = pitch;
+}
+ 
 })
 
 function speakMessage(msg_to_speak) {
@@ -42,7 +61,6 @@ function speakMessage(msg_to_speak) {
     if(readyToSpeak){
         readyToSpeak = false;
     
-        var msg = new SpeechSynthesisUtterance();
     
         if(chosenVoice != 0){
             msg.voice = chosenVoice;
@@ -50,14 +68,13 @@ function speakMessage(msg_to_speak) {
            console.log(chosenVoice);
         }
     
-        msg.rate = speed; // SPEED OF THE VOICE From 0.1 to 10 
-        msg.pitch = pitch; // From 0 to 2
+        
         
       
         msg.text = msg_to_speak;
 
         synth.speak(msg); 
-        document.getElementById("speaking").style.display = "block";
+       // document.getElementById("speaking").style.display = "block";
 
         msg.onend = function(event) {
            // sendToArduino("10"); // send code 10: voice finished to speak

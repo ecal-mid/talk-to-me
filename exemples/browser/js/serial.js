@@ -17,7 +17,7 @@ let sendButton3 = document.getElementById("sendButton3");
 let sendButton4 = document.getElementById("sendButton4");
 let sendButton5 = document.getElementById("sendButton5");
 
-let fakeMode = true;
+let fakeMode = false;
 
 //Couple the elements to the Events
 connectButton.addEventListener("click", clickConnect)
@@ -317,7 +317,8 @@ function loadVoice (){
                 btn.onclick = () => {changeVoice(currentVoice, lang, i)};                 // Insert text
                 div.appendChild(btn);
             }
-            container.appendChild(div);    
+            container.appendChild(div); 
+            voicesReady();   
         }
     }
 
@@ -338,7 +339,7 @@ function changeVoice(voice, langage, index){
           console.warn(
           `Pour utiliser cette voix :
           ~ligne 8
-          ChosenVoice = voices.${langage}.${index}`);
+          ChosenVoice = voices.${voice.lang[0]}${voice.lang[1]}[${index}]`);
     }
    
 }
