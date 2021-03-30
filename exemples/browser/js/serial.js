@@ -289,6 +289,7 @@ function creatButton(){
 function loadVoice (){
 
     synth.onvoiceschanged = ()=>{
+        console.log("loading voice")
         const v = synth.getVoices();
         //console.log("est-ce que ça marche")
         console.log("ready");
